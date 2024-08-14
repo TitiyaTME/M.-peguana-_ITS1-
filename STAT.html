@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Results of Assembly</title>
+    <link rel="stylesheet" href="./src/default.css"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load("current", {"packages":["corechart", "bar"]});
+        google.charts.setOnLoadCallback(drawChart1);
+        google.charts.setOnLoadCallback(drawChart2);
+        function drawChart1() {
+            var data = google.visualization.arrayToDataTable([
+                ['Sample','Count'],
+                ['VCL',90564],
+                ['Vermicompost',96692],
+                ['M.pegunagut',80421],
+                ['Perionyx.sp1gut',103632],
+            ]);
+            var options = {hAxis: {title: "Sample"}, vAxis: {title: "Read Count", minValue:0 }, legend: {position: "top"}, colors: ['#67B7DC']};
+            var chart = new google.visualization.ColumnChart(document.getElementById('bar_read_count'));
+            chart.draw(data, options);
+        }
+
+        function drawChart2() {
+            var data = google.visualization.arrayToDataTable([
+                ['Sample', 'Q20', 'Q30'],
+                ['VCL', 99.61, 98.35],
+                ['Vermicompost', 99.89, 99.36],
+                ['M.pegunagut', 99.9, 99.43],
+                ['Perionyx.sp1gut', 99.93, 99.63],
+            ]);
+            var options = {hAxis: {title: "Sample"}, vAxis: {title: "%", minValue:0 }, legend: {position: "top"}, colors: ['#67B7DC', '#CC4748']};
+            var chart = new google.visualization.ColumnChart(document.getElementById('bar_Q20_Q30'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div class="title-sec">
+                <div class="title-inner-sec">
+    <a href="http://www.macrogen.com/" target="_blank">
+        <img src="./src/img/logo.png" alt="MACROGEN">
+    </a>
+    <h1>NGS Analysis Report - OTU</h1>
+                </div>
+            </div>
+        </div><!-- // header END -->
+    <div id="container" class="paddingT20">
+        <h2 class="title">Results of Assembly (by FLASH)</h2>
+        <table class="tb1">
+            <tr>
+                <th class="tbtop" colspan=7><h2>Read Count by Sample</h2></th>
+            </tr>
+            <tr>
+                <td colspan=7><div id="bar_read_count"></div><td>
+            <tr>
+                <th class="tbtop" colspan=7><h2>Read Quality by Sample</h2></th>
+            </tr>
+            <tr>
+                <td colspan=7><div id="bar_Q20_Q30"></div><td>
+            </tr>
+            <caption class="hide">Results of Assembly (by FLASH)</caption>
+            <colgroup>
+                <col width="180"/>
+                <col width="180"/>
+                <col width="180"/>
+                <col width="115"/>
+                <col width="115"/>
+                <col width="115"/>
+                <col width="115"/>
+            </colgroup>
+            <tr>
+                <th class="tbtop">SampleName</th>
+                <th class="tbtop">Total Bases</th>
+                <th class="tbtop">Read Count</th>
+                <th class="tbtop">N(%)</th>
+                <th class="tbtop">GC(%)</th>
+                <th class="tbtop">Q20(%)</th>
+                <th class="tbtop">Q30(%)</th>
+            </tr>
+            <tr>
+                <td class="alignC">VCL</td>
+                <td class="alignC">27,207,145</td>
+                <td class="alignC">90,564</td>
+                <td class="alignC">0.0</td>
+                <td class="alignC">47.7</td>
+                <td class="alignC">99.61</td>
+                <td class="alignC">98.35</td>
+            </tr>
+            <tr>
+                <td class="alignC">Vermicompost</td>
+                <td class="alignC">27,718,479</td>
+                <td class="alignC">96,692</td>
+                <td class="alignC">0.0</td>
+                <td class="alignC">47.22</td>
+                <td class="alignC">99.89</td>
+                <td class="alignC">99.36</td>
+            </tr>
+            <tr>
+                <td class="alignC">M.pegunagut</td>
+                <td class="alignC">23,196,360</td>
+                <td class="alignC">80,421</td>
+                <td class="alignC">0.0</td>
+                <td class="alignC">48.18</td>
+                <td class="alignC">99.9</td>
+                <td class="alignC">99.43</td>
+            </tr>
+            <tr>
+                <td class="alignC">Perionyx.sp1gut</td>
+                <td class="alignC">28,139,070</td>
+                <td class="alignC">103,632</td>
+                <td class="alignC">0.0001</td>
+                <td class="alignC">44.37</td>
+                <td class="alignC">99.93</td>
+                <td class="alignC">99.63</td>
+            </tr>
+            <tr>
+                <td class="alignL" colspan=7 style="padding-left:10px">
+                * Total Bases : The total number of bases in reads indentified<br>
+                * Read Count : The total number of sequence reads<br>
+                * N(%) : The N percentage in sequence reads<br>
+                * GC(%) : The GC percentage in sequence reads<br>
+                * Q20(%) : The percentage of bases in which the phred score is above 20<br>
+                * Q30(%) : The percentage of bases in which the phred score is above 30<br>
+                </td>
+            </tr>
+        </table>
+        <div class="clear"></div>
+        <!-- space--><div style="height:1080px"></div>
+    </div><!-- container END -->
+    </div><!-- // wrapper END -->
+</body>
+</html>
